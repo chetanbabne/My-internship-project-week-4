@@ -1,0 +1,93 @@
+import random
+
+# Introduction
+print("Welcome to the Adventure Game!")
+
+# Function for Decision Point 1
+def decision_point_1():
+    print("You find yourself at a fork in the road.")
+    print("          |  |")
+    print("          |  |")
+    print("          |  |")
+    print("         /____\\")
+    print("The left path seems dark and mysterious, while the right path is bathed in sunlight.")
+    choice = input("Enter '1' to go left or '2' to go right: ")
+    if choice == '1':
+        print("You chose the left path.")
+        decision_point_2(random.randint(1, 2))  # Random event for the next decision point
+    elif choice == '2':
+        print("You chose the right path.")
+        decision_point_2(random.randint(1, 2))  # Random event for the next decision point
+    else:
+        print("Invalid input. Please try again.")
+        decision_point_1()  # Restart the function if the input is invalid
+
+# Function for Decision Point 2
+def decision_point_2(event):
+    if event == 1:
+        print("As you continue your journey, you encounter a friendly traveler who offers to accompany you.")
+        print("   O")
+        print("  /|\\")
+        print("  / \\")
+        choice = input("Enter '1' to accept the company or '2' to continue alone: ")
+        if choice == '1':
+            print("You accept the company of the traveler.")
+            decision_point_3()
+        elif choice == '2':
+            print("You decide to continue alone.")
+            decision_point_3()
+        else:
+            print("Invalid input. Please try again.")
+            decision_point_2(event)  # Restart the function if the input is invalid
+    elif event == 2:
+        print("A fierce storm begins, and you must find shelter quickly.")
+        print("    .--.")
+        print("   /  0  \\")
+        print("  |  \\_/  |")
+        print("  |       |")
+        print("  |       |")
+        print("   \\     /")
+        print("    `\\ /`")
+        choice = input("Enter '1' to take refuge under a nearby cave or '2' to build a temporary shelter: ")
+        if choice == '1':
+            print("You seek refuge in the cave.")
+            decision_point_3()
+        elif choice == '2':
+            print("You build a temporary shelter.")
+            decision_point_3()
+        else:
+            print("Invalid input. Please try again.")
+            decision_point_2(event)  # Restart the function if the input is invalid
+
+# Function for Decision Point 3
+def decision_point_3():
+    print("You encounter a fierce creature guarding the path to the artifact. You must make a choice to proceed.")
+    print("        .--.")
+    print("       |o_o |")
+    print("       |:_/ |")
+    print("      //   \\ \\")
+    print("     (|     | )")
+    print("    /'\\_   _/`\\")
+    print("    \\___)=(___/")
+    choice = input("Enter '1' to engage in combat or '2' to try to sneak past it: ")
+    if choice == '1':
+        print("You engage in combat with the creature.")
+        conclusion("victory")
+    elif choice == '2':
+        print("You attempt to sneak past the creature.")
+        conclusion("escape")
+    else:
+        print("Invalid input. Please try again.")
+        decision_point_3()  # Restart the function if the input is invalid
+
+# Function for the Conclusion
+def conclusion(result):
+    if result == "victory":
+        print("Congratulations! You've defeated the creature and obtained the artifact.")
+    elif result == "escape":
+        print("You manage to sneak past the creature and retrieve the artifact without a fight.")
+    else:
+        print("Game over! Try again.")
+
+# Start the game by calling the first decision point function
+decision_point_1()
